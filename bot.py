@@ -7,6 +7,7 @@ import random
 import time
 import datetime
 import io
+import os
 
 bot = discord.Client()
 bot_prefix= "<"
@@ -189,4 +190,4 @@ async def link(ctx):
     await bot.say(embed=embed)
 
 
-bot.run(process.env.BOT_TOKEN)
+bot.run(os.getenv("BOT_TOKEN"))
