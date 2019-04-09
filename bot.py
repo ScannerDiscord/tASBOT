@@ -10,7 +10,7 @@ import io
 import os
 
 bot = discord.Client()
-bot_prefix= "<"
+bot_prefix= "t!"
 bot = commands.Bot(command_prefix=bot_prefix)
 bot.remove_command("help")
 
@@ -81,6 +81,19 @@ async def on_ready():
     print("Users: {}".format(len(set(bot.get_all_members()))))
     await bot.change_presence(game=discord.Game(name="the AnimatedStick".format(len(set(bot.get_all_members()))),type=3))
 
+@bot.command(pass_context=True)
+async def dm(ctx , user:discord.Member = None):
+    if ctx.message.author == ctx.message.server.owner:
+        if user is None:
+            return
+        else:
+            text = ctx.message.content[len('dm {} >'.format(user)):].strip()
+            await bot.send_message(user , text)
+            await bot.delete_message(ctx.message)
+    else:
+        return        
+        
+        
 @bot.command(pass_context = True)
 async def ping(ctx):
     pingtime = time.time()
