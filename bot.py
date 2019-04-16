@@ -42,7 +42,7 @@ async def on_message(message):
                                                                   ":8ball: | **{},** Outlook is Not So Good  ".format(message.author.name),
                                                                   ":8ball: | **{},** Very doubtful  ".format(message.author.name)]))
 
-        elif message.content.startswith("<tell"):
+        elif message.content.startswith("t!say"):
             if message.author.id == "429118689367949322":
                 text = message.content[len('<tell'):].strip()
                 if "efnejifn" in text:
@@ -62,6 +62,7 @@ async def on_message(message):
         await bot.process_commands(message)
 
 
+        
 
 
 @bot.event
